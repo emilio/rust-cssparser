@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="generator" content="rustdoc">
+    <meta name="description" content="API documentation for the Rust `Token` enum in crate `cssparser`.">
+    <meta name="keywords" content="rust, rustlang, rust-lang, Token">
+
+    <title>cssparser::Token - Rust</title>
+
+    <link rel="stylesheet" type="text/css" href="../rustdoc.css">
+    <link rel="stylesheet" type="text/css" href="../main.css">
+
+    
+    
+</head>
+<body class="rustdoc">
+    <!--[if lte IE 8]>
+    <div class="warning">
+        This old browser is unsupported and will most likely display funky
+        things.
+    </div>
+    <![endif]-->
+
+    
+
+    <nav class="sidebar">
+        
+        <p class='location'><a href='index.html'>cssparser</a></p><script>window.sidebarCurrent = {name: 'Token', ty: 'enum', relpath: ''};</script><script defer src="sidebar-items.js"></script>
+    </nav>
+
+    <nav class="sub">
+        <form class="search-form js-only">
+            <div class="search-container">
+                <input class="search-input" name="search"
+                       autocomplete="off"
+                       placeholder="Click or press ‘S’ to search, ‘?’ for more options…"
+                       type="search">
+            </div>
+        </form>
+    </nav>
+
+    <section id='main' class="content enum">
+<h1 class='fqn'><span class='in-band'>Enum <a href='index.html'>cssparser</a>::<wbr><a class='enum' href=''>Token</a></span><span class='out-of-band'><span id='render-detail'>
+            <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
+                [<span class='inner'>&#x2212;</span>]
+            </a>
+        </span><a id='src-210' class='srclink' href='../src/cssparser/tokenizer.rs.html#23-158' title='goto source code'>[src]</a></span></h1>
+<pre class='rust enum'>pub enum Token&lt;'a&gt; {
+    Ident(<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    AtKeyword(<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    Hash(<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    IDHash(<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    QuotedString(<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    UnquotedUrl(<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    Delim(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.char.html'>char</a>),
+    Number(<a class='struct' href='../cssparser/struct.NumericValue.html' title='cssparser::NumericValue'>NumericValue</a>),
+    Percentage(<a class='struct' href='../cssparser/struct.PercentageValue.html' title='cssparser::PercentageValue'>PercentageValue</a>),
+    Dimension(<a class='struct' href='../cssparser/struct.NumericValue.html' title='cssparser::NumericValue'>NumericValue</a>, <a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    UnicodeRange(<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.u32.html'>u32</a>),
+    WhiteSpace(&amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>),
+    Comment(&amp;'a <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>),
+    Colon,
+    Semicolon,
+    Comma,
+    IncludeMatch,
+    DashMatch,
+    PrefixMatch,
+    SuffixMatch,
+    SubstringMatch,
+    Column,
+    CDO,
+    CDC,
+    Function(<a class='enum' href='https://doc.rust-lang.org/nightly/collections/borrow/enum.Cow.html' title='collections::borrow::Cow'>Cow</a>&lt;'a, <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>&gt;),
+    ParenthesisBlock,
+    SquareBracketBlock,
+    CurlyBracketBlock,
+    BadUrl,
+    BadString,
+    CloseParenthesis,
+    CloseSquareBracket,
+    CloseCurlyBracket,
+}</pre><div class='docblock'><p>One of the pieces the CSS input is broken into.</p>
+
+<p>Some components use <code>CowString</code> in order to borrow from the original input string
+and avoid allocating/copying when possible.</p>
+</div><h2 class='variants'>Variants</h2>
+<table><tr><td id='variant.Ident'><code>Ident</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#ident-token-diagram"><code>&lt;ident-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.AtKeyword'><code>AtKeyword</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#at-keyword-token-diagram"><code>&lt;at-keyword-token&gt;</code></a></p>
+
+<p>The value does not include the <code>@</code> marker.</p>
+</div></td></tr><tr><td id='variant.Hash'><code>Hash</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#hash-token-diagram"><code>&lt;hash-token&gt;</code></a> with the type flag set to &quot;unrestricted&quot;</p>
+
+<p>The value does not include the <code>#</code> marker.</p>
+</div></td></tr><tr><td id='variant.IDHash'><code>IDHash</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#hash-token-diagram"><code>&lt;hash-token&gt;</code></a> with the type flag set to &quot;id&quot;</p>
+
+<p>The value does not include the <code>#</code> marker.</p>
+</div></td></tr><tr><td id='variant.QuotedString'><code>QuotedString</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#string-token-diagram"><code>&lt;string-token&gt;</code></a></p>
+
+<p>The value does not include the quotes.</p>
+</div></td></tr><tr><td id='variant.UnquotedUrl'><code>UnquotedUrl</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#url-token-diagram"><code>&lt;url-token&gt;</code></a> or <code>url( &lt;string-token&gt; )</code> function</p>
+
+<p>The value does not include the <code>url(</code> <code>)</code> markers or the quotes.</p>
+</div></td></tr><tr><td id='variant.Delim'><code>Delim</code></td><td><div class='docblock'><p>A <code>&lt;delim-token&gt;</code></p>
+</div></td></tr><tr><td id='variant.Number'><code>Number</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#number-token-diagram"><code>&lt;number-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.Percentage'><code>Percentage</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#percentage-token-diagram"><code>&lt;percentage-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.Dimension'><code>Dimension</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#dimension-token-diagram"><code>&lt;dimension-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.UnicodeRange'><code>UnicodeRange</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#unicode-range-token-diagram"><code>&lt;unicode-range-token&gt;</code></a></p>
+
+<p>Components are the start and end code points, respectively.</p>
+
+<p>The tokenizer only reads up to 6 hex digit (up to 0xFF_FFFF),
+but does not check that code points are within the range of Unicode (up to U+10_FFFF).</p>
+</div></td></tr><tr><td id='variant.WhiteSpace'><code>WhiteSpace</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#whitespace-token-diagram"><code>&lt;whitespace-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.Comment'><code>Comment</code></td><td><div class='docblock'><p>A comment.</p>
+
+<p>The CSS Syntax spec does not generate tokens for comments,
+But we do, because we can (borrowed &amp;str makes it cheap).</p>
+
+<p>The value does not include the <code>/*</code> <code>*/</code> markers.</p>
+</div></td></tr><tr><td id='variant.Colon'><code>Colon</code></td><td><div class='docblock'><p>A <code>:</code> <code>&lt;colon-token&gt;</code></p>
+</div></td></tr><tr><td id='variant.Semicolon'><code>Semicolon</code></td><td><div class='docblock'><p>A <code>;</code> <code>&lt;semicolon-token&gt;</code></p>
+</div></td></tr><tr><td id='variant.Comma'><code>Comma</code></td><td><div class='docblock'><p>A <code>,</code> <code>&lt;comma-token&gt;</code></p>
+</div></td></tr><tr><td id='variant.IncludeMatch'><code>IncludeMatch</code></td><td><div class='docblock'><p>A <code>~=</code> <a href="https://drafts.csswg.org/css-syntax/#include-match-token-diagram"><code>&lt;include-match-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.DashMatch'><code>DashMatch</code></td><td><div class='docblock'><p>A <code>|=</code> <a href="https://drafts.csswg.org/css-syntax/#dash-match-token-diagram"><code>&lt;dash-match-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.PrefixMatch'><code>PrefixMatch</code></td><td><div class='docblock'><p>A <code>^=</code> <a href="https://drafts.csswg.org/css-syntax/#prefix-match-token-diagram"><code>&lt;prefix-match-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.SuffixMatch'><code>SuffixMatch</code></td><td><div class='docblock'><p>A <code>$=</code> <a href="https://drafts.csswg.org/css-syntax/#suffix-match-token-diagram"><code>&lt;suffix-match-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.SubstringMatch'><code>SubstringMatch</code></td><td><div class='docblock'><p>A <code>*=</code> <a href="https://drafts.csswg.org/css-syntax/#substring-match-token-diagram"><code>&lt;substring-match-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.Column'><code>Column</code></td><td><div class='docblock'><p>A <code>||</code> <a href="https://drafts.csswg.org/css-syntax/#column-token-diagram"><code>&lt;column-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.CDO'><code>CDO</code></td><td><div class='docblock'><p>A <code>&lt;!--</code> <a href="https://drafts.csswg.org/css-syntax/#CDO-token-diagram"><code>&lt;CDO-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.CDC'><code>CDC</code></td><td><div class='docblock'><p>A <code>--&gt;</code> <a href="https://drafts.csswg.org/css-syntax/#CDC-token-diagram"><code>&lt;CDC-token&gt;</code></a></p>
+</div></td></tr><tr><td id='variant.Function'><code>Function</code></td><td><div class='docblock'><p>A <a href="https://drafts.csswg.org/css-syntax/#function-token-diagram"><code>&lt;function-token&gt;</code></a></p>
+
+<p>The value (name) does not include the <code>(</code> marker.</p>
+</div></td></tr><tr><td id='variant.ParenthesisBlock'><code>ParenthesisBlock</code></td><td><div class='docblock'><p>A <code>&lt;(-token&gt;</code></p>
+</div></td></tr><tr><td id='variant.SquareBracketBlock'><code>SquareBracketBlock</code></td><td><div class='docblock'><p>A <code>&lt;[-token&gt;</code></p>
+</div></td></tr><tr><td id='variant.CurlyBracketBlock'><code>CurlyBracketBlock</code></td><td><div class='docblock'><p>A <code>&lt;{-token&gt;</code></p>
+</div></td></tr><tr><td id='variant.BadUrl'><code>BadUrl</code></td><td><div class='docblock'><p>A <code>&lt;bad-url-token&gt;</code></p>
+
+<p>This token always indicates a parse error.</p>
+</div></td></tr><tr><td id='variant.BadString'><code>BadString</code></td><td><div class='docblock'><p>A <code>&lt;bad-string-token&gt;</code></p>
+
+<p>This token always indicates a parse error.</p>
+</div></td></tr><tr><td id='variant.CloseParenthesis'><code>CloseParenthesis</code></td><td><div class='docblock'><p>A <code>&lt;)-token&gt;</code></p>
+
+<p>When obtained from one of the <code>Parser::next*</code> methods,
+this token is always unmatched and indicates a parse error.</p>
+</div></td></tr><tr><td id='variant.CloseSquareBracket'><code>CloseSquareBracket</code></td><td><div class='docblock'><p>A <code>&lt;]-token&gt;</code></p>
+
+<p>When obtained from one of the <code>Parser::next*</code> methods,
+this token is always unmatched and indicates a parse error.</p>
+</div></td></tr><tr><td id='variant.CloseCurlyBracket'><code>CloseCurlyBracket</code></td><td><div class='docblock'><p>A <code>&lt;}-token&gt;</code></p>
+
+<p>When obtained from one of the <code>Parser::next*</code> methods,
+this token is always unmatched and indicates a parse error.</p>
+</div></td></tr></table><h2 id='methods'>Methods</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.is_parse_error' class='method'><code>fn <a href='#method.is_parse_error' class='fnname'>is_parse_error</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Return whether this token represents a parse error.</p>
+
+<p><code>BadUrl</code> and <code>BadString</code> are tokenizer-level parse errors.</p>
+
+<p><code>CloseParenthesis</code>, <code>CloseSquareBracket</code>, and <code>CloseCurlyBracket</code> are <em>unmatched</em>
+and therefore parse errors when returned by one of the <code>Parser::next*</code> methods.</p>
+</div></div><h3 class='impl'><code>impl&lt;'a&gt; <a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.serialization_type' class='method'><code>fn <a href='#method.serialization_type' class='fnname'>serialization_type</a>(&amp;self) -&gt; <a class='struct' href='../cssparser/struct.TokenSerializationType.html' title='cssparser::TokenSerializationType'>TokenSerializationType</a></code></h4>
+<div class='docblock'><p>Categorize a token into a type that determines when <code>/**/</code> needs to be inserted
+between two tokens when serialized next to each other without whitespace in between.</p>
+
+<p>See the <code>TokenSerializationType::needs_separator_when_before</code> method.</p>
+</div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='../cssparser/trait.ToCss.html' title='cssparser::ToCss'>ToCss</a> for <a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.to_css' class='method'><code>fn <a href='../cssparser/trait.ToCss.html#method.to_css' class='fnname'>to_css</a>&lt;W&gt;(&amp;self, dest: &amp;mut W) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a> <span class='where'>where W: <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Write.html' title='core::fmt::Write'>Write</a></span></code></h4>
+<h4 id='method.to_css_string' class='method'><code>fn <a href='../cssparser/trait.ToCss.html#method.to_css_string' class='fnname'>to_css_string</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
+<h4 id='method.fmt_to_css' class='method'><code>fn <a href='../cssparser/trait.ToCss.html#method.fmt_to_css' class='fnname'>fmt_to_css</a>&lt;W&gt;(&amp;self, dest: &amp;mut W) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a> <span class='where'>where W: <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Write.html' title='core::fmt::Write'>Write</a></span></code></h4>
+</div><h3 id='derived_implementations'>Derived Implementations </h3><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html' title='core::clone::Clone'>Clone</a> for <a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.clone' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone' class='fnname'>clone</a>(&amp;self) -&gt; <a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;</code></h4>
+<h4 id='method.clone_from' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/clone/trait.Clone.html#method.clone_from' class='fnname'>clone_from</a>(&amp;mut self, source: &amp;Self)</code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html' title='core::fmt::Debug'>Debug</a> for <a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Debug.html#method.fmt' class='fnname'>fmt</a>(&amp;self, __arg_0: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
+</div><h3 class='impl'><code>impl&lt;'a&gt; <a class='trait' href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html' title='core::cmp::PartialEq'>PartialEq</a> for <a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;</code></h3><div class='impl-items'><h4 id='method.eq' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.eq' class='fnname'>eq</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<h4 id='method.ne' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/cmp/trait.PartialEq.html#method.ne' class='fnname'>ne</a>(&amp;self, __arg_0: &amp;<a class='enum' href='../cssparser/enum.Token.html' title='cssparser::Token'>Token</a>&lt;'a&gt;) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+</div></section>
+    <section id='search' class="content hidden"></section>
+
+    <section class="footer"></section>
+
+    <aside id="help" class="hidden">
+        <div>
+            <h1 class="hidden">Help</h1>
+
+            <div class="shortcuts">
+                <h2>Keyboard Shortcuts</h2>
+
+                <dl>
+                    <dt>?</dt>
+                    <dd>Show this help dialog</dd>
+                    <dt>S</dt>
+                    <dd>Focus the search field</dd>
+                    <dt>&larrb;</dt>
+                    <dd>Move up in search results</dd>
+                    <dt>&rarrb;</dt>
+                    <dd>Move down in search results</dd>
+                    <dt>&#9166;</dt>
+                    <dd>Go to active search result</dd>
+                </dl>
+            </div>
+
+            <div class="infos">
+                <h2>Search Tricks</h2>
+
+                <p>
+                    Prefix searches with a type followed by a colon (e.g.
+                    <code>fn:</code>) to restrict the search to a given type.
+                </p>
+
+                <p>
+                    Accepted types are: <code>fn</code>, <code>mod</code>,
+                    <code>struct</code>, <code>enum</code>,
+                    <code>trait</code>, <code>type</code>, <code>macro</code>,
+                    and <code>const</code>.
+                </p>
+
+                <p>
+                    Search functions by type signature (e.g.
+                    <code>vec -> usize</code>)
+                </p>
+            </div>
+        </div>
+    </aside>
+
+    
+
+    <script>
+        window.rootPath = "../";
+        window.currentCrate = "cssparser";
+        window.playgroundUrl = "";
+    </script>
+    <script src="../jquery.js"></script>
+    <script src="../main.js"></script>
+    
+    <script defer src="../search-index.js"></script>
+</body>
+</html>
